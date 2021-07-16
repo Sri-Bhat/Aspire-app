@@ -1,0 +1,1 @@
+export {AspireAppRouter} from './router';

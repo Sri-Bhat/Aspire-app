@@ -1,0 +1,10 @@
+{
+  "screens":{
+    "home": "Home",
+    "debitCard": "DebitCard",
+    "payments": "Payments",
+    "credit": "Credit",
+    "profile": "Profile"
+  },
+  "params": {}
+}

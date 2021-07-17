@@ -1,5 +1,7 @@
 {
   "comingSoon": "Coming Soon",
   "debitCard": "Debit Card",
-  "availableBalance": "Available Balance"
+  "availableBalance": "Available Balance",
+  "showcard": "Show card number",
+  "hideCard": "Hide card number"
 }

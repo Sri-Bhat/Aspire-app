@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {Images} from '../../assets';
 import {Colors} from '../../assets/colors';
+import {Constants} from '../../localization';
 import CommonStyles from '../../utils/commonStyles';
 import DataHandlers from '../../utils/datahandlers';
 import Scaling from '../../utils/scaling';
@@ -16,14 +17,17 @@ import Scaling from '../../utils/scaling';
 export default function Card(props) {
   const {data} = props;
   const [showNumber, setShowNumber] = useState(false);
-  const [manageMsg, setmanageMsg] = useState('hii');
+  const [manageMsg, setmanageMsg] = useState(Constants.showcard);
+  const [icon, setIcon] = useState(Images.eye);
   const cardArray = DataHandlers.getCardNumberArray('1234567890123456');
 
   useEffect(() => {
     if (showNumber) {
-      setmanageMsg('Hi2');
+      setmanageMsg(Constants.hideCard);
+      setIcon(Images.eyeHide);
     } else {
-      setmanageMsg('Hi1');
+      setmanageMsg(Constants.showcard);
+      setIcon(Images.eye);
     }
   }, [showNumber]);
 
@@ -35,7 +39,7 @@ export default function Card(props) {
           console.log('On press called');
           setShowNumber(prevState => !prevState);
         }}>
-        <Image source={Images.eye} style={styles.eyeIcon} />
+        <Image source={icon} style={styles.eyeIcon} />
         <Text style={styles.showtext}>{manageMsg}</Text>
       </TouchableOpacity>
       <View style={styles.container}>
@@ -46,7 +50,6 @@ export default function Card(props) {
         <View style={styles.cardNumber}>
           {cardArray.map((item, index) => {
             const isFirstpart = index < 3;
-            const normalStyle = isFirstpart ? {} : styles.normalNum;
             return (
               <View key={index} style={index !== 0 && styles.section}>
                 {
@@ -54,10 +57,9 @@ export default function Card(props) {
                     style={{
                       ...CommonStyles.boldText,
                       ...styles.num,
-                      ...normalStyle,
                     }}
                     editable={false}
-                    secureTextEntry={isFirstpart}
+                    secureTextEntry={isFirstpart && !showNumber}
                     value={item}
                   />
                 }
@@ -67,7 +69,9 @@ export default function Card(props) {
         </View>
         <View style={styles.others}>
           <Text style={styles.otherText}>Thru: 12/22</Text>
-          <Text style={{...styles.otherText, ...styles.cvv}}>CVV: ***</Text>
+          <Text style={{...styles.otherText, ...styles.cvv}}>
+            CVV: {showNumber ? '123' : '***'}
+          </Text>
         </View>
         <Image source={Images.visa} style={styles.cardType} />
       </View>

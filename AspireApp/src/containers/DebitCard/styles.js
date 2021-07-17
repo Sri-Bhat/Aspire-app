@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
   },
   headingContainer: {
     height: Scaling.shp(40),
+    position: 'relative',
   },
   text: {
     marginTop: Scaling.sh(20),
@@ -42,8 +43,13 @@ export const styles = StyleSheet.create({
     marginTop: Scaling.sh(-30),
   },
   cardContainer: {
-    //position: 'absolute',
-    marginTop: Scaling.sh(-86),
-    width: Scaling.swp(100),
+    marginTop: Scaling.sh(200),
+  },
+  card: {
+    position: 'absolute',
+    width: '100%',
+    marginTop: Scaling.shp(20),
+    zIndex: 2,
+    padding: Scaling.sw(24),
   },
 });

@@ -33,7 +33,7 @@ export default function DebitCard() {
   const renderBody = () => {
     return (
       <View style={styles.cardContainer}>
-        <Card />
+        <Text>Hii</Text>
       </View>
     );
   };
@@ -43,6 +43,9 @@ export default function DebitCard() {
       <Background style={styles.headingContainer}>
         {renderHeaderDetails()}
       </Background>
+      <View style={styles.card}>
+        <Card />
+      </View>
       <Background style={styles.bodyContainer}>{renderBody()}</Background>
     </ScrollView>
   );

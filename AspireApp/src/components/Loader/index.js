@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   container: {
     height: Scaling.shp(100),
     width: Scaling.swp(100),
-    backgroundColor: '#00000020',
+    backgroundColor: Colors.semiTransparent,
     alignContent: 'center',
     justifyContent: 'center',
   },

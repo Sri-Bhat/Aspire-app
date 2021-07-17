@@ -3,4 +3,5 @@ export const Colors = {
   green: '#01D167',
   voilet: '#0C365A',
   white: '#FFFFFF',
+  semiTransparent: '#00000020',
 };

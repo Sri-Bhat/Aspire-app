@@ -1,3 +1,4 @@
+import {sections} from './sections';
 import {Tabs} from './tabs';
 
 export const Images = {
@@ -7,4 +8,5 @@ export const Images = {
   eyeHide: require('./others/eyeHide.png'),
   logoWithText: require('./logos/AspireLogo.png'),
   visa: require('./logos/Visa.png'),
+  debitSections: {...sections},
 };

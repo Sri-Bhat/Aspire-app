@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import {Background} from '../../components';
+import {Background, Card} from '../../components';
 import {styles} from './styles';
 import Logo from '../../assets/images/logos/Logo.svg';
 import Chip from '../../components/Chip';
@@ -32,10 +32,8 @@ export default function DebitCard() {
 
   const renderBody = () => {
     return (
-      <View>
-        <Text style={{...CommonStyles.boldText, ...{color: 'black'}}}>
-          Body
-        </Text>
+      <View style={styles.cardContainer}>
+        <Card />
       </View>
     );
   };

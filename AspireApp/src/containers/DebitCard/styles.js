@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     height: Scaling.shp(40),
   },
   text: {
-    marginTop: Scaling.sh(25),
+    marginTop: Scaling.sh(20),
   },
   heading: {
     display: 'flex',
@@ -40,5 +40,10 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: Scaling.sw(30),
     borderTopRightRadius: Scaling.sw(30),
     marginTop: Scaling.sh(-30),
+  },
+  cardContainer: {
+    //position: 'absolute',
+    marginTop: Scaling.sh(-86),
+    width: Scaling.swp(100),
   },
 });

@@ -1,6 +1,6 @@
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {ComingSoon} from '../containers';
+import {ComingSoon, DebitCard} from '../containers';
 import {BottomTabBar} from './_components';
 
 const rootConfig = require('./config.json');
@@ -8,7 +8,7 @@ const rootConfig = require('./config.json');
 const AspireApp = createBottomTabNavigator(
   {
     Home: {screen: ComingSoon},
-    DebitCard: {screen: ComingSoon},
+    DebitCard: {screen: DebitCard},
     Payments: {screen: ComingSoon},
     Credit: {screen: ComingSoon},
     Profile: {screen: ComingSoon},

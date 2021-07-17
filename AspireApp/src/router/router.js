@@ -1,6 +1,7 @@
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {ComingSoon} from '../containers';
+import {BottomTabBar} from './_components';
 
 const rootConfig = require('./config.json');
 
@@ -17,6 +18,7 @@ const AspireApp = createBottomTabNavigator(
     headerMode: 'none',
     swipeEnabled: true,
     tabBarPosition: 'bottom',
+    tabBarComponent: BottomTabBar,
   },
 );
 

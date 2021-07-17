@@ -7,6 +7,7 @@ import Chip from '../../components/Chip';
 import CommonStyles from '../../utils/commonStyles';
 import {Constants} from '../../localization';
 import {DebitCardServices} from '../../services/debitCard';
+import Loader from '../../components/Loader';
 
 export default function DebitCard() {
   const [data, setdata] = useState(null);
@@ -55,15 +56,23 @@ export default function DebitCard() {
     );
   };
 
+  const renderData = () => {
+    return (
+      <View>
+        <Background style={styles.headingContainer}>
+          {renderHeaderDetails()}
+        </Background>
+        <View style={styles.card}>
+          <Card />
+        </View>
+        <Background style={styles.bodyContainer}>{renderBody()}</Background>
+      </View>
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
-      <Background style={styles.headingContainer}>
-        {renderHeaderDetails()}
-      </Background>
-      <View style={styles.card}>
-        <Card />
-      </View>
-      <Background style={styles.bodyContainer}>{renderBody()}</Background>
+      {loading ? <Loader /> : renderData()}
     </ScrollView>
   );
 }

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableHighlight} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {DataHandlers} from '../../../utils';
+import {Images} from '../../../assets';
 
 export default function BottomTabBar(props) {
   const [currentTab, setcurrentTab] = useState(0);
@@ -15,17 +16,23 @@ export default function BottomTabBar(props) {
 
   const renderTab = (name, index) => {
     return (
-      <TouchableHighlight>
+      <TouchableOpacity key={index} onPress={() => onPressTab(index, name)}>
+        <Image
+          source={Images.tabs[index]}
+          style={{
+            ...styles.image,
+            ...(index === currentTab ? styles.selectedImage : {}),
+          }}
+        />
         <Text
           style={{
             ...styles.textNormal,
             ...(index === currentTab ? styles.textSelected : {}),
           }}
-          key={index}
-          onPress={() => onPressTab(index, name)}>
+          key={index}>
           {name}
         </Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   };
 

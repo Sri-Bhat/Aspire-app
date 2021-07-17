@@ -8,11 +8,22 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: Scaling.sw(15),
+    borderTopColor: Colors.grey,
+    borderTopWidth: Scaling.ms(1),
   },
   textNormal: {
     color: Colors.grey,
+    fontSize: Scaling.ms(9),
+    marginTop: Scaling.sh(4),
   },
   textSelected: {
     color: Colors.green,
+  },
+  image: {
+    alignSelf: 'center',
+    tintColor: Colors.grey,
+  },
+  selectedImage: {
+    tintColor: Colors.green,
   },
 });

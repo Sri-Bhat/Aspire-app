@@ -1,0 +1,8 @@
+{
+  "methods": {
+    "get":"GET",
+    "post":"POST"
+  },
+  "baseURL": "https://aed80ba1-416a-4830-b152-2e19a1491466.mock.pstmn.io/",
+  "debitCard": "debitcard"
+}

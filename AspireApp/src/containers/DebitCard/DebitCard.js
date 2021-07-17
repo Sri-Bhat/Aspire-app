@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import {Background, Card} from '../../components';
 import {styles} from './styles';
@@ -6,8 +6,25 @@ import Logo from '../../assets/images/logos/Logo.svg';
 import Chip from '../../components/Chip';
 import CommonStyles from '../../utils/commonStyles';
 import {Constants} from '../../localization';
+import {DebitCardServices} from '../../services/debitCard';
 
 export default function DebitCard() {
+  const [data, setdata] = useState(null);
+  const [loading, setloading] = useState(true);
+
+  const onSuccessGettingData = res => {
+    setdata(res);
+    setloading(false);
+  };
+
+  const onFailure = error => {
+    alert('Something went wrong');
+  };
+
+  useEffect(() => {
+    DebitCardServices.getDebitCardsInfo(onSuccessGettingData, onFailure);
+  }, []);
+
   const renderHeaderDetails = () => {
     return (
       <View style={styles.heading}>

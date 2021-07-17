@@ -1,6 +1,11 @@
 import React from 'react';
-import {AspireAppRouter} from './src';
+import {Provider} from 'react-redux';
+import {AspireAppRouter, Store} from './src';
 
-const App = () => <AspireAppRouter />;
+const App = () => (
+  <Provider store={Store}>
+    <AspireAppRouter />
+  </Provider>
+);
 
 export default App;

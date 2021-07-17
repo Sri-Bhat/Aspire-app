@@ -5,7 +5,7 @@ import Scaling from '../../utils/scaling';
 import PropTypes from 'prop-types';
 
 Background.propTypes = {
-  style: PropTypes.string,
+  style: PropTypes.object,
 };
 
 Background.defaultProps = {

@@ -7,4 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  comingSoon: {
+    marginTop: 20,
+  },
 });

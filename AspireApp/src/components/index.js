@@ -1,1 +1,1 @@
-export {default as Background} from './BackgroundTheme';
+export {default as Background} from './Background';

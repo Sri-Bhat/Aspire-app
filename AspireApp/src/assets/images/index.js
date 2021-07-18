@@ -9,4 +9,6 @@ export const Images = {
   logoWithText: require('./logos/AspireLogo.png'),
   visa: require('./logos/Visa.png'),
   debitSections: {...sections},
+  backButton: require('./others/backButton.png'),
+  saveIcon: require('./others/save.png'),
 };

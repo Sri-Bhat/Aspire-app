@@ -52,4 +52,35 @@ export const styles = StyleSheet.create({
     zIndex: 2,
     padding: Scaling.sw(24),
   },
+  progressContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  progresLables: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  instruction: {
+    color: Colors.voilet,
+    fontSize: Scaling.ms(13),
+  },
+  limitValue: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  limit: {
+    color: Colors.green,
+    fontSize: Scaling.ms(13),
+    fontWeight: 'bold',
+  },
+  value: {
+    color: Colors.grey,
+    fontSize: Scaling.ms(13),
+    fontWeight: 'bold',
+  },
+  progres: {
+    marginTop: Scaling.sh(10),
+    marginBottom: Scaling.sh(15),
+  },
 });

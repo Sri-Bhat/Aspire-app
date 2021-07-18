@@ -29,6 +29,7 @@ export default function SpendingLimit(props) {
   const context = useContext(AspireContext);
   const datahandlers = context && context.dataHandlers;
   const {saveSpentLimit} = datahandlers;
+  const {spentLimit} = context;
 
   useEffect(() => {
     if (currency) {
@@ -37,6 +38,10 @@ export default function SpendingLimit(props) {
       setDisabled(true);
     }
   }, [currency, disabled]);
+
+  useEffect(() => {
+    if (spentLimit) setCurrency(spentLimit);
+  }, [spentLimit]);
 
   const renderHeadingPart = () => {
     return (

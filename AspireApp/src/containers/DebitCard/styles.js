@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     marginTop: Scaling.sh(-30),
   },
   cardContainer: {
-    marginTop: Scaling.sh(200),
+    marginTop: Scaling.sh(150),
   },
   card: {
     position: 'absolute',

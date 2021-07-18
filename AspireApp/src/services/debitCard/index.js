@@ -7,8 +7,7 @@ export class DebitCardServices {
       url: networkConfig.debitCard,
       method: networkConfig.methods.get,
     })
-      .then(response => {
-        const data = response && response.data;
+      .then(data => {
         onSuccess && onSuccess(data);
       })
       .catch(error => {

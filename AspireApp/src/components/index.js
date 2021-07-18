@@ -1,3 +1,4 @@
 export {default as Background} from './Background';
 export {default as Card} from './Card';
 export {default as Chip} from './Chip';
+export {default as SectionCard} from './SectionCard';

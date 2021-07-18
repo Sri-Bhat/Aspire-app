@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import {Background, Card} from '../../components';
+import {Background, Card, SectionCard} from '../../components';
 import {styles} from './styles';
 import Logo from '../../assets/images/logos/Logo.svg';
 import Chip from '../../components/Chip';
@@ -8,6 +8,7 @@ import CommonStyles from '../../utils/commonStyles';
 import {Constants} from '../../localization';
 import {DebitCardServices} from '../../services/debitCard';
 import Loader from '../../components/Loader';
+import DataHandlers from '../../utils/datahandlers';
 
 export default function DebitCard() {
   const [data, setdata] = useState(null);
@@ -49,9 +50,21 @@ export default function DebitCard() {
   };
 
   const renderBody = () => {
+    const sectionData = DataHandlers.get(data, 'sections');
     return (
       <View style={styles.cardContainer}>
-        <Text>Hii</Text>
+        {sectionData &&
+          sectionData.map((item, index) => (
+            <SectionCard
+              key={index}
+              data={item}
+              title={item.title}
+              description={item.description}
+              containsToggle={item.containsToggle}
+              onPress={() => {}}
+              onPressToggle={() => {}}
+            />
+          ))}
       </View>
     );
   };

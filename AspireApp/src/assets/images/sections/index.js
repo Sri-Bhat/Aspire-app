@@ -3,5 +3,5 @@ export const sections = {
   limit: require('./limit.png'),
   freeze: require('./freeze.png'),
   newCard: require('./newCard.png'),
-  deActive: require('./deActivate.png'),
+  deActivated: require('./deActivate.png'),
 };

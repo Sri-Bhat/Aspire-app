@@ -6,17 +6,21 @@ import Scaling from '../../utils/scaling';
 
 Chip.propTypes = {
   value: PropTypes.string,
+  style: PropTypes.object,
+  textStye: PropTypes.object,
 };
 
 Chip.defaultProps = {
   value: 'S$',
+  style: {},
+  textStye: {},
 };
 
 export default function Chip(props) {
-  const {value} = props;
+  const {value, style, textStye} = props;
   return (
-    <View style={styles.container}>
-      <Text style={styles.value}>{value}</Text>
+    <View style={{...styles.container, ...style}}>
+      <Text style={{...styles.value, ...textStye}}>{value}</Text>
     </View>
   );
 }

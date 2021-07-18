@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: Scaling.ms(20),
     borderTopRightRadius: Scaling.ms(20),
     marginTop: Scaling.sh(-40),
+    height: Scaling.shp(80),
   },
   label: {
     display: 'flex',
@@ -58,5 +59,24 @@ export const styles = StyleSheet.create({
   instructionText: {
     fontSize: Scaling.ms(13),
     color: Colors.greyprime,
+  },
+  chipes: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: Scaling.sh(20),
+  },
+  chip: {
+    backgroundColor: Colors.greenSecondary,
+    width: Scaling.sw(114),
+  },
+  chipText: {
+    color: Colors.green,
+    fontWeight: 'bold',
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: Scaling.sh(20),
+    alignSelf: 'center',
   },
 });

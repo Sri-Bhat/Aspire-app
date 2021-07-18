@@ -8,4 +8,5 @@ export const Colors = {
   voiletTertiary: '#222222',
   greySecondary: '#EEEEEE',
   greyprime: '#22222266',
+  greenSecondary: '#20D16710',
 };

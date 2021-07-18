@@ -6,21 +6,10 @@ import {BottomTabBar} from './_components';
 
 const rootConfig = require('./config.json');
 
-const DebitCardStack = createStackNavigator(
-  {
-    DebitCard: {screen: DebitCard},
-    SpendingLimit: {screen: SpendingLimit},
-  },
-  {
-    initialRouteName: rootConfig.screens.debitCard,
-    headerMode: 'none',
-  },
-);
-
-const AspireApp = createBottomTabNavigator(
+const HomeTabs = createBottomTabNavigator(
   {
     Home: {screen: ComingSoon},
-    DebitCard: {screen: DebitCardStack},
+    DebitCard: {screen: DebitCard},
     Payments: {screen: ComingSoon},
     Credit: {screen: ComingSoon},
     Profile: {screen: ComingSoon},
@@ -31,6 +20,21 @@ const AspireApp = createBottomTabNavigator(
     swipeEnabled: true,
     tabBarPosition: 'bottom',
     tabBarComponent: BottomTabBar,
+  },
+);
+
+const AspireApp = createStackNavigator(
+  {
+    Home: {
+      screen: HomeTabs,
+    },
+    SpendingLimit: {
+      screen: SpendingLimit,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    headerMode: 'none',
   },
 );
 

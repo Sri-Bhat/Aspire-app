@@ -13,4 +13,16 @@ export default class DataHandlers {
     const set4 = value.substring(12, 16);
     return [set1, set2, set3, set4];
   };
+
+  static ValidateFloating = val => {
+    if (/^\d*\.?\d*$/.test(val)) return true;
+    return false;
+  };
+
+  static numberWithCommas = x => {
+    x = x.toString();
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x)) x = x.replace(pattern, '$1,$2');
+    return x;
+  };
 }

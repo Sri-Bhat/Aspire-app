@@ -1,5 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Images} from '../../assets/images';
 import Background from '../../components/Background';
 import Logo from '../../assets/images/logos/Logo.svg';
@@ -22,7 +31,7 @@ export default function SpendingLimit(props) {
     } else {
       setDisabled(true);
     }
-  }, [currency]);
+  }, [currency, disabled]);
 
   const renderHeadingPart = () => {
     return (
@@ -88,17 +97,19 @@ export default function SpendingLimit(props) {
         </View>
         <View
           pointerEvents={disabled ? 'none' : 'auto'}
-          style={{...styles.buttonContainer, opacity: disabled ? 0.4 : 1}}>
-          <Button isDisabled={disabled} />
+          style={styles.buttonContainer}>
+          <Button isDisabled={disabled} onPress={() => navigation.goBack()} />
         </View>
       </Background>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      style={styles.container}>
       {renderHeadingPart()}
       {renderBody()}
-    </View>
+    </KeyboardAwareScrollView>
   );
 }

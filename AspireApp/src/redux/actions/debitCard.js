@@ -1,8 +1,8 @@
 import * as Types from '../Types';
 
-export const saveDebitCardDetails = appMode => {
+export const saveDebitCardDetails = debitCard => {
   return {
-    type: Types.APP_MODE,
-    appMode,
+    type: Types.DEBIT_CARD,
+    debitCard,
   };
 };

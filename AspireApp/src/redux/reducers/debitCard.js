@@ -1,8 +1,8 @@
 import createReducer from './config';
 import * as Types from '../Types';
 
-export const debitcardDetails = createReducer('en', {
-  [Types.APP_MODE](state, action) {
-    return action.appMode;
+export const saveDebitCardDetails = createReducer('en', {
+  [Types.DEBIT_CARD](state, action) {
+    return action.debitCard;
   },
 });

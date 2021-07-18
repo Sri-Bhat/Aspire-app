@@ -1,1 +1,1 @@
-export const APP_MODE = 'APP_MODE';
+export const DEBIT_CARD = 'DEBIT_CARD';

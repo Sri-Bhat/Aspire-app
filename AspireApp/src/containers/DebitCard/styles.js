@@ -41,9 +41,10 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: Scaling.sw(30),
     borderTopRightRadius: Scaling.sw(30),
     marginTop: Scaling.sh(-30),
+    height: Scaling.shp(80),
   },
   cardContainer: {
-    marginTop: Scaling.sh(150),
+    marginTop: Scaling.sh(135),
   },
   card: {
     position: 'absolute',

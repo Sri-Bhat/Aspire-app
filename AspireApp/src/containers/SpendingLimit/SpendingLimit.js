@@ -8,6 +8,7 @@ import CommonStyles from '../../utils/commonStyles';
 import Chip from '../../components/Chip';
 import {Colors} from '../../assets/colors';
 import DataHandlers from '../../utils/datahandlers';
+import {Button} from '../../components';
 
 export default function SpendingLimit(props) {
   const {navigation} = props;
@@ -16,7 +17,7 @@ export default function SpendingLimit(props) {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    if (currency && currency.length > 0) {
+    if (currency) {
       setDisabled(false);
     } else {
       setDisabled(true);
@@ -85,8 +86,10 @@ export default function SpendingLimit(props) {
             </TouchableOpacity>
           ))}
         </View>
-        <View style={styles.buttonContainer}>
-          <Text>Hii</Text>
+        <View
+          pointerEvents={disabled ? 'none' : 'auto'}
+          style={{...styles.buttonContainer, opacity: disabled ? 0.4 : 1}}>
+          <Button isDisabled={disabled} />
         </View>
       </Background>
     );

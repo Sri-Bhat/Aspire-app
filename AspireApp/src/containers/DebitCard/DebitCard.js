@@ -13,6 +13,7 @@ import Loader from '../../components/Loader';
 import DataHandlers from '../../utils/datahandlers';
 import {AspireContext} from '../../context';
 import {Scaling} from '../../utils';
+import {Colors} from '../../assets';
 const routerConfig = require('./../../router/config.json');
 
 export default function DebitCard(props) {
@@ -30,7 +31,7 @@ export default function DebitCard(props) {
   };
 
   const onFailure = error => {
-    alert('Something went wrong');
+    alert(Constants.wentWrong);
   };
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export default function DebitCard(props) {
     );
   };
 
-  const showToast = () => Toast.show('Coming soon');
+  const showToast = () => Toast.show(Constants.comingSoon);
 
   const navigateToInnerScreen = () =>
     navigation.navigate(routerConfig.screens.spendingLimit);
@@ -84,7 +85,7 @@ export default function DebitCard(props) {
     return (
       <View style={styles.progressContainer}>
         <View style={styles.progresLables}>
-          <Text style={styles.instruction}>Debit card spending limit</Text>
+          <Text style={styles.instruction}>{Constants.spendingLimitLabel}</Text>
           <View style={styles.limitValue}>
             <Text style={styles.limit}>$ {debittedAmount} </Text>
             <Text style={styles.value}>| $ {spentLimit}</Text>
@@ -94,10 +95,10 @@ export default function DebitCard(props) {
           <Progress.Bar
             progress={progress}
             width={Scaling.sw(366)}
-            height={10}
-            borderColor="transparent"
-            unfilledColor="#01D16710"
-            color="#01D167"
+            height={Scaling.sh(10)}
+            borderColor={Colors.transparent}
+            unfilledColor={Colors.greenTeriary}
+            color={Colors.green}
           />
         </View>
       </View>

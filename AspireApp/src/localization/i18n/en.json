@@ -3,5 +3,11 @@
   "debitCard": "Debit Card",
   "availableBalance": "Available Balance",
   "showcard": "Show card number",
-  "hideCard": "Hide card number"
+  "hideCard": "Hide card number",
+  "wentWrong": "Something went wrong",
+  "spendingLimitLabel": "Debit card spending limit",
+  "spending": "Spending limit",
+  "weeklySetMsg": "Set a weekly debit card spending limit",
+  "weelySetMore": "Here weekly means the last 7 days - not the calendar week",
+  "suggestions": [5000, 10000, 20000]
 }

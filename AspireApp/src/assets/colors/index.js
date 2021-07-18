@@ -9,4 +9,6 @@ export const Colors = {
   greySecondary: '#EEEEEE',
   greyprime: '#22222266',
   greenSecondary: '#20D16710',
+  greenTeriary: '#01D16710',
+  transparent: 'transparent',
 };

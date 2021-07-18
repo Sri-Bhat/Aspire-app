@@ -1,13 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Images} from '../../assets/images';
 import Background from '../../components/Background';
@@ -19,6 +11,7 @@ import {Colors} from '../../assets/colors';
 import DataHandlers from '../../utils/datahandlers';
 import {Button} from '../../components';
 import {AspireContext} from '../../context';
+import {Constants} from '../../localization';
 
 export default function SpendingLimit(props) {
   const {navigation} = props;
@@ -55,7 +48,7 @@ export default function SpendingLimit(props) {
           <Logo width="26" height="26" />
         </View>
         <View style={styles.textContainer}>
-          <Text style={CommonStyles.boldText}>Spending limit</Text>
+          <Text style={CommonStyles.boldText}>{Constants.spending}</Text>
         </View>
       </Background>
     );
@@ -70,9 +63,7 @@ export default function SpendingLimit(props) {
       <Background style={styles.bodyConatiner}>
         <View style={styles.label}>
           <Image source={Images.saveIcon} />
-          <Text style={styles.labelText}>
-            Set a weekly debit card spending limit
-          </Text>
+          <Text style={styles.labelText}>{Constants.weeklySetMsg}</Text>
         </View>
         <View style={styles.inputContainer}>
           <Chip />
@@ -89,12 +80,10 @@ export default function SpendingLimit(props) {
           />
         </View>
         <View style={styles.instructions}>
-          <Text style={styles.instructionText}>
-            Here weekly means the last 7 days - not the calendar week
-          </Text>
+          <Text style={styles.instructionText}>{Constants.weelySetMore}</Text>
         </View>
         <View style={styles.chipes}>
-          {[5000, 10000, 20000].map((item, index) => (
+          {Constants.suggestions.map((item, index) => (
             <TouchableOpacity key={index} onPress={() => onPressChips(item)}>
               <Chip
                 textStye={styles.chipText}
@@ -121,9 +110,7 @@ export default function SpendingLimit(props) {
   };
 
   return (
-    <KeyboardAwareScrollView
-      behavior={Platform.OS === 'ios' ? 'padding' : null}
-      style={styles.container}>
+    <KeyboardAwareScrollView style={styles.container}>
       {renderHeadingPart()}
       {renderBody()}
     </KeyboardAwareScrollView>

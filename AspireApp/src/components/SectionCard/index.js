@@ -6,8 +6,15 @@ import {Images} from '../../assets/images';
 import {Scaling} from '../../utils';
 
 export default function SectionCard(props) {
-  const {data, title, description, containsToggle, onPress, onPressToggle} =
-    props;
+  const {
+    data,
+    title,
+    description,
+    containsToggle,
+    toggleStatus,
+    onPress,
+    onPressToggle,
+  } = props;
   const image = Images.debitSections[data.key];
   return (
     <TouchableOpacity
@@ -22,7 +29,7 @@ export default function SectionCard(props) {
       {containsToggle && (
         <View style={styles.toggle}>
           <ToggleSwitch
-            isOn={false}
+            isOn={toggleStatus}
             onColor={Colors.green}
             offColor={Colors.greySecondary}
             size="small"

@@ -8,6 +8,7 @@ const AspireContextProvider = props => {
   const [state, setState] = useState({
     // Future note: Data can be added Here as new key here:
     spentLimit: null,
+    isLimitSet: false,
   });
 
   const saveSpentLimit = value => {
@@ -15,6 +16,16 @@ const AspireContextProvider = props => {
       setState({
         ...prevState,
         spentLimit: value,
+        isLimitSet: true,
+      }),
+    );
+  };
+
+  const manageLimitSetting = flag => {
+    setState(prevState =>
+      setState({
+        ...prevState,
+        isLimitSet: flag,
       }),
     );
   };
@@ -22,6 +33,7 @@ const AspireContextProvider = props => {
   // Future note: Rest data handlers can be wrapped here:
   const dataHandlers = {
     saveSpentLimit,
+    manageLimitSetting,
   };
 
   return (

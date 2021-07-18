@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -18,12 +18,17 @@ import Chip from '../../components/Chip';
 import {Colors} from '../../assets/colors';
 import DataHandlers from '../../utils/datahandlers';
 import {Button} from '../../components';
+import {AspireContext} from '../../context';
 
 export default function SpendingLimit(props) {
   const {navigation} = props;
 
   const [currency, setCurrency] = useState('');
   const [disabled, setDisabled] = useState(true);
+
+  const context = useContext(AspireContext);
+  const datahandlers = context && context.dataHandlers;
+  const {saveSpentLimit} = datahandlers;
 
   useEffect(() => {
     if (currency) {
@@ -98,7 +103,13 @@ export default function SpendingLimit(props) {
         <View
           pointerEvents={disabled ? 'none' : 'auto'}
           style={styles.buttonContainer}>
-          <Button isDisabled={disabled} onPress={() => navigation.goBack()} />
+          <Button
+            isDisabled={disabled}
+            onPress={() => {
+              saveSpentLimit(currency);
+              navigation.goBack();
+            }}
+          />
         </View>
       </Background>
     );

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import Toast from 'react-native-simple-toast';
 import {Background, Card, SectionCard} from '../../components';
@@ -10,12 +10,17 @@ import {Constants} from '../../localization';
 import {DebitCardServices} from '../../services/debitCard';
 import Loader from '../../components/Loader';
 import DataHandlers from '../../utils/datahandlers';
+import {AspireContext} from '../../context';
 const routerConfig = require('./../../router/config.json');
 
 export default function DebitCard(props) {
   const {navigation} = props;
   const [data, setdata] = useState(null);
   const [loading, setloading] = useState(true);
+
+  const context = useContext(AspireContext);
+  const {spentLimit, dataHandlers, isLimitSet} = context;
+  const {manageLimitSetting} = dataHandlers;
 
   const onSuccessGettingData = res => {
     setdata(res);
@@ -31,6 +36,8 @@ export default function DebitCard(props) {
   }, []);
 
   const renderHeaderDetails = () => {
+    const availBalance = DataHandlers.get(data, 'balanceDetails.amount');
+    const currencyVal = DataHandlers.get(data, 'balanceDetails.currency');
     return (
       <View style={styles.heading}>
         <View style={styles.titleContainer}>
@@ -43,9 +50,9 @@ export default function DebitCard(props) {
           <Text style={styles.balanceText}>{Constants.availableBalance}</Text>
         </View>
         <View style={styles.currencySection}>
-          <Chip />
+          <Chip value={currencyVal} />
           <Text style={{...CommonStyles.boldText, ...styles.currency}}>
-            3,000
+            {availBalance && availBalance.toLocaleString()}
           </Text>
         </View>
       </View>
@@ -56,6 +63,18 @@ export default function DebitCard(props) {
 
   const navigateToInnerScreen = () =>
     navigation.navigate(routerConfig.screens.spendingLimit);
+
+  const onPressToggle = flag => {
+    if (flag) {
+      if (spentLimit) {
+        manageLimitSetting(flag);
+      } else {
+        navigation.navigate(routerConfig.screens.spendingLimit);
+      }
+    } else {
+      manageLimitSetting(flag);
+    }
+  };
 
   const renderBody = () => {
     const sectionData = DataHandlers.get(data, 'sections');
@@ -72,7 +91,8 @@ export default function DebitCard(props) {
               onPress={
                 item.containsInnerScreens ? navigateToInnerScreen : showToast
               }
-              onPressToggle={() => {}}
+              onPressToggle={onPressToggle}
+              toggleStatus={isLimitSet && index === 1}
             />
           ))}
       </View>

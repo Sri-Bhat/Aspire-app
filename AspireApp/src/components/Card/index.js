@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import PropTyps from 'prop-types';
 import {Images} from '../../assets';
 import {Colors} from '../../assets/colors';
 import {Constants} from '../../localization';
@@ -14,12 +15,24 @@ import CommonStyles from '../../utils/commonStyles';
 import DataHandlers from '../../utils/datahandlers';
 import Scaling from '../../utils/scaling';
 
+Card.prototype = {
+  data: PropTyps.object,
+};
+
+Card.defaultProps = {
+  data: {},
+};
+
 export default function Card(props) {
   const {data} = props;
+  const cardHolderName = DataHandlers.get(data, 'cardHolderName');
+  const cardNumber = DataHandlers.get(data, 'number');
+  const validThrough = DataHandlers.get(data, 'validThrough');
+  const cvv = DataHandlers.get(data, 'cvv');
   const [showNumber, setShowNumber] = useState(false);
   const [manageMsg, setmanageMsg] = useState(Constants.showcard);
   const [icon, setIcon] = useState(Images.eye);
-  const cardArray = DataHandlers.getCardNumberArray('1234567890123456');
+  const cardArray = DataHandlers.getCardNumberArray(cardNumber);
 
   useEffect(() => {
     if (showNumber) {
@@ -35,17 +48,14 @@ export default function Card(props) {
     <View>
       <TouchableOpacity
         style={styles.top}
-        onPress={() => {
-          console.log('On press called');
-          setShowNumber(prevState => !prevState);
-        }}>
+        onPress={() => setShowNumber(prevState => !prevState)}>
         <Image source={icon} style={styles.eyeIcon} />
         <Text style={styles.showtext}>{manageMsg}</Text>
       </TouchableOpacity>
       <View style={styles.container}>
         <Image source={Images.logoWithText} style={styles.logo} />
         <Text style={{...CommonStyles.boldText, ...styles.cardHolder}}>
-          Mark Henry
+          {cardHolderName}
         </Text>
         <View style={styles.cardNumber}>
           {cardArray.map((item, index) => {
@@ -68,9 +78,9 @@ export default function Card(props) {
           })}
         </View>
         <View style={styles.others}>
-          <Text style={styles.otherText}>Thru: 12/22</Text>
+          <Text style={styles.otherText}>Thru: {validThrough}</Text>
           <Text style={{...styles.otherText, ...styles.cvv}}>
-            CVV: {showNumber ? '123' : '***'}
+            CVV: {showNumber ? cvv : '***'}
           </Text>
         </View>
         <Image source={Images.visa} style={styles.cardType} />

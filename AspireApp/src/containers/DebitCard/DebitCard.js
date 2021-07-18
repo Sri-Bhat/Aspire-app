@@ -13,7 +13,6 @@ import Loader from '../../components/Loader';
 import DataHandlers from '../../utils/datahandlers';
 import {AspireContext} from '../../context';
 import {Scaling} from '../../utils';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 const routerConfig = require('./../../router/config.json');
 
 export default function DebitCard(props) {
@@ -130,15 +129,15 @@ export default function DebitCard(props) {
   };
 
   const renderData = () => {
+    const cardDetails = DataHandlers.get(data, 'cardDetail');
     return (
       <View>
         <Background style={styles.headingContainer}>
           {renderHeaderDetails()}
         </Background>
         <View style={styles.card}>
-          <Card />
+          <Card data={cardDetails} />
         </View>
-
         <Background style={styles.bodyContainer}>{renderBody()}</Background>
       </View>
     );

@@ -1,9 +1,30 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import PropTypes from 'prop-types';
 import ToggleSwitch from 'toggle-switch-react-native';
 import {Colors} from '../../assets/colors';
 import {Images} from '../../assets/images';
 import {Scaling} from '../../utils';
+
+SectionCard.propType = {
+  data: PropTypes.object,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  containsToggle: PropTypes.bool,
+  toggleStatus: PropTypes.bool,
+  onPress: PropTypes.func,
+  onPressToggle: PropTypes.func,
+};
+
+SectionCard.defaultProps = {
+  data: {},
+  title: ' ',
+  description: ' ',
+  containsToggle: false,
+  toggleStatus: false,
+  onPress: () => {},
+  onPressToggle: () => {},
+};
 
 export default function SectionCard(props) {
   const {

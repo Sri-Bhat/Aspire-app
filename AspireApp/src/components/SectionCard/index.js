@@ -1,23 +1,19 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import ToggleSwitch from 'toggle-switch-react-native';
 import {Colors} from '../../assets/colors';
 import {Images} from '../../assets/images';
 import {Scaling} from '../../utils';
 
 export default function SectionCard(props) {
-  const {
-    data,
-    title,
-    description,
-    item,
-    containsToggle,
-    onPress,
-    onPressToggle,
-  } = props;
+  const {data, title, description, containsToggle, onPress, onPressToggle} =
+    props;
   const image = Images.debitSections[data.key];
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={styles.container}
+      activeOpacity={0.7}>
       <Image source={image} />
       <View style={styles.textArea}>
         <Text style={styles.title}>{title}</Text>
@@ -34,7 +30,7 @@ export default function SectionCard(props) {
           />
         </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -1,14 +1,26 @@
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {ComingSoon, DebitCard} from '../containers';
+import {createStackNavigator} from 'react-navigation-stack';
+import {ComingSoon, DebitCard, SpendingLimit} from '../containers';
 import {BottomTabBar} from './_components';
 
 const rootConfig = require('./config.json');
 
+const DebitCardStack = createStackNavigator(
+  {
+    DebitCard: {screen: DebitCard},
+    SpendingLimit: {screen: SpendingLimit},
+  },
+  {
+    initialRouteName: rootConfig.screens.debitCard,
+    headerMode: 'none',
+  },
+);
+
 const AspireApp = createBottomTabNavigator(
   {
     Home: {screen: ComingSoon},
-    DebitCard: {screen: DebitCard},
+    DebitCard: {screen: DebitCardStack},
     Payments: {screen: ComingSoon},
     Credit: {screen: ComingSoon},
     Profile: {screen: ComingSoon},

@@ -4,7 +4,8 @@
     "debitCard": "DebitCard",
     "payments": "Payments",
     "credit": "Credit",
-    "profile": "Profile"
+    "profile": "Profile",
+    "spendingLimit": "SpendingLimit"
   },
   "params": {}
 }

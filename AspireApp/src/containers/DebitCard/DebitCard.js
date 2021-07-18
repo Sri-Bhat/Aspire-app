@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
+import Toast from 'react-native-simple-toast';
 import {Background, Card, SectionCard} from '../../components';
 import {styles} from './styles';
 import Logo from '../../assets/images/logos/Logo.svg';
@@ -9,8 +10,10 @@ import {Constants} from '../../localization';
 import {DebitCardServices} from '../../services/debitCard';
 import Loader from '../../components/Loader';
 import DataHandlers from '../../utils/datahandlers';
+const routerConfig = require('./../../router/config.json');
 
-export default function DebitCard() {
+export default function DebitCard(props) {
+  const {navigation} = props;
   const [data, setdata] = useState(null);
   const [loading, setloading] = useState(true);
 
@@ -49,6 +52,11 @@ export default function DebitCard() {
     );
   };
 
+  const showToast = () => Toast.show('Coming soon');
+
+  const navigateToInnerScreen = () =>
+    navigation.navigate(routerConfig.screens.spendingLimit);
+
   const renderBody = () => {
     const sectionData = DataHandlers.get(data, 'sections');
     return (
@@ -61,7 +69,9 @@ export default function DebitCard() {
               title={item.title}
               description={item.description}
               containsToggle={item.containsToggle}
-              onPress={() => {}}
+              onPress={
+                item.containsInnerScreens ? navigateToInnerScreen : showToast
+              }
               onPressToggle={() => {}}
             />
           ))}

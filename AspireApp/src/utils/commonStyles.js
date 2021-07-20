@@ -1,16 +1,17 @@
 import {Colors} from '../assets/colors';
 import Scaling from './scaling';
 
-export default class CommonStyles {
-  static boldText = {
+// This is the common styles which are normally used in multiple times in our code
+export const CommonStyles = {
+  boldText: {
     fontSize: Scaling.ms(24),
     fontWeight: 'bold',
     color: Colors.white,
-  };
+  },
 
-  static container = {
+  container: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  };
-}
+  },
+};

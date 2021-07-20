@@ -36,6 +36,8 @@ export default function Card(props) {
   const [showNumber, setShowNumber] = useState(false);
   const [manageMsg, setmanageMsg] = useState(Constants.showcard);
   const [icon, setIcon] = useState(Images.eye);
+
+  // Generating card number array from string (To disply in separate section)
   const cardArray = DataHandlers.getCardNumberArray(cardNumber);
 
   useEffect(() => {

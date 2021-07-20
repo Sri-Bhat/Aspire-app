@@ -7,6 +7,7 @@ import Logo from '../../assets/images/logos/Logo.svg';
 import {styles} from './styles';
 import {Constants} from '../../localization';
 
+// This is a placeholder Screen:
 const ComingSoon = function (props) {
   return (
     <View style={styles.container}>
@@ -16,6 +17,7 @@ const ComingSoon = function (props) {
   );
 };
 
+// Just added redux Here: (But not used much) (Code level it has configured)
 function mapStateToProps(state) {
   return {
     debitcardDetails: state.debitcardDetails,

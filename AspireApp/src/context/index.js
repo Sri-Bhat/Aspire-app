@@ -1,5 +1,7 @@
 import React, {useState, createContext} from 'react';
 
+// This context can be used as Global context for data handling.
+
 export const AspireContext = createContext();
 const AspireConsumer = AspireContext.Consumer;
 

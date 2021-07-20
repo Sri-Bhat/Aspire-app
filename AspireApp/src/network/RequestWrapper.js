@@ -3,7 +3,11 @@ import {AspireNetWorkInstance} from './axios';
 
 /**
  * Request Wrapper with default success/error actions
+ * This is commmon service file for any API calls:
+ * onSuccess and inFailure will be recieved and callback can based on API responce
+ * those call backs gets excecuted
  */
+
 export const ApiRequest = async function (options) {
   const onSuccess = function (response) {
     console.log('Request Successful!', response);

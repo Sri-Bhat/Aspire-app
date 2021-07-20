@@ -5,9 +5,10 @@ import Scaling from '../../utils/scaling';
 export const styles = StyleSheet.create({
   container: {
     display: 'flex',
+    backgroundColor: Colors.transparent,
   },
   headingContainer: {
-    height: Scaling.shp(40),
+    height: Scaling.shp(45),
     position: 'relative',
   },
   text: {
@@ -40,14 +41,14 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderTopLeftRadius: Scaling.sw(30),
     borderTopRightRadius: Scaling.sw(30),
-    marginTop: Scaling.shp(-27),
+    marginTop: Scaling.shp(-22),
     height: 'auto',
   },
   cardContainer: {
-    marginTop: Scaling.shp(26),
+    marginTop: Scaling.shp(20),
   },
   card: {
-    marginTop: Scaling.shp(-20),
+    marginTop: Scaling.shp(-25),
     zIndex: 2,
     padding: Scaling.sw(24),
   },

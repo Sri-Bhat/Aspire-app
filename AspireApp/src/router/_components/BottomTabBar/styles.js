@@ -10,6 +10,10 @@ export const styles = StyleSheet.create({
     padding: Scaling.sw(15),
     borderTopColor: Colors.grey,
     borderTopWidth: Scaling.ms(1),
+    backgroundColor: Colors.white,
+    paddingLeft: Scaling.sw(31),
+    paddingRight: Scaling.sw(31),
+    height: Scaling.sh(56),
   },
   textNormal: {
     color: Colors.grey,

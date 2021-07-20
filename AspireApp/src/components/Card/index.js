@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     backgroundColor: Colors.green,
-    minHeight: Scaling.sh(160),
+    height: 'auto',
     width: Scaling.swp(100),
     padding: Scaling.sw(24),
     borderRadius: Scaling.sw(15),
@@ -160,5 +160,6 @@ const styles = StyleSheet.create({
   },
   cardType: {
     alignSelf: 'flex-end',
+    marginBottom: Scaling.sh(10),
   },
 });

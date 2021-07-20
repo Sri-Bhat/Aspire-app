@@ -15,7 +15,7 @@ export default class DataHandlers {
   };
 
   static ValidateFloating = val => {
-    if (/^\d*\.?\d*$/.test(val)) return true;
+    if (/^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/.test(val)) return true;
     return false;
   };
 

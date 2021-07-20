@@ -68,12 +68,16 @@ export default function SpendingLimit(props) {
         <View style={styles.inputContainer}>
           <Chip />
           <TextInput
-            value={currency}
+            value={DataHandlers.numberWithCommas(currency)}
             keyboardType={'number-pad'}
             style={{...CommonStyles.boldText, ...styles.inputText}}
             onChangeText={text => {
-              if (DataHandlers.ValidateFloating(text) || text == '') {
-                setCurrency(text);
+              if (
+                (DataHandlers.ValidateFloating(text.replace(/,/g, '')) &&
+                  text.length < 12) ||
+                text == ''
+              ) {
+                setCurrency(text.replace(/,/g, ''));
               }
             }}
             placeholder={'Type Here '}

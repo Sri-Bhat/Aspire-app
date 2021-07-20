@@ -16,13 +16,14 @@ import {Constants} from '../../localization';
 export default function SpendingLimit(props) {
   const {navigation} = props;
 
-  const [currency, setCurrency] = useState('');
-  const [disabled, setDisabled] = useState(true);
-
+  // Extracting dataHanlers and Limit value  from Context
   const context = useContext(AspireContext);
   const datahandlers = context && context.dataHandlers;
   const {saveSpentLimit} = datahandlers;
   const {spentLimit} = context;
+
+  const [currency, setCurrency] = useState(spentLimit ? spentLimit : '');
+  const [disabled, setDisabled] = useState(currency <= 0);
 
   useEffect(() => {
     if (currency) {
@@ -104,6 +105,7 @@ export default function SpendingLimit(props) {
           <Button
             isDisabled={disabled}
             onPress={() => {
+              // on Press Save: Limit value gets stored in React contect
               saveSpentLimit(currency);
               navigation.goBack();
             }}

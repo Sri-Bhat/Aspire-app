@@ -80,6 +80,7 @@ export default function DebitCard(props) {
   };
 
   const renderprogress = () => {
+    // Extracting Response data through DataHandlers.get method to avoid null handling
     const debittedAmount = DataHandlers.get(data, 'debitedAmount');
     const progress = debittedAmount / parseInt(spentLimit);
     return (
@@ -106,6 +107,7 @@ export default function DebitCard(props) {
   };
 
   const renderBody = () => {
+    // Extracting Response data through DataHandlers.get method to avoid null handling
     const sectionData = DataHandlers.get(data, 'sections');
     return (
       <View style={styles.cardContainer}>
@@ -130,14 +132,25 @@ export default function DebitCard(props) {
   };
 
   const renderData = () => {
+    // Extracting Response data through DataHandlers.get method to avoid null handling
     const cardDetails = DataHandlers.get(data, 'cardDetail');
+    const cardNumber = DataHandlers.get(data, 'cardDetail.number');
+    const cvv = DataHandlers.get(data, 'cardDetail.cvv');
+    const validThrough = DataHandlers.get(data, 'cardDetail.validThrough');
+    const cardHolderName = DataHandlers.get(data, 'cardDetail.cardHolderName');
     return (
       <View>
         <Background style={styles.headingContainer}>
           {renderHeaderDetails()}
         </Background>
         <View style={styles.card}>
-          <Card data={cardDetails} />
+          <Card
+            data={cardDetails}
+            cardNumber={cardNumber}
+            cvv={cvv}
+            validThrough={validThrough}
+            cardHolderName={cardHolderName}
+          />
         </View>
         <Background style={styles.bodyContainer}>{renderBody()}</Background>
       </View>

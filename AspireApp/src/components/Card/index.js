@@ -17,18 +17,22 @@ import Scaling from '../../utils/scaling';
 
 Card.prototype = {
   data: PropTyps.object,
+  cardNumber: PropTyps.string,
+  cvv: PropTyps.string,
+  validThrough: PropTyps.string,
+  cardHolderName: PropTyps.string,
 };
 
 Card.defaultProps = {
   data: {},
+  cardNumber: ' ',
+  cvv: ' ',
+  validThrough: ' ',
+  cardHolderName: ' ',
 };
 
 export default function Card(props) {
-  const {data} = props;
-  const cardHolderName = DataHandlers.get(data, 'cardHolderName');
-  const cardNumber = DataHandlers.get(data, 'number');
-  const validThrough = DataHandlers.get(data, 'validThrough');
-  const cvv = DataHandlers.get(data, 'cvv');
+  const {cardHolderName, cardNumber, validThrough, cvv} = props;
   const [showNumber, setShowNumber] = useState(false);
   const [manageMsg, setmanageMsg] = useState(Constants.showcard);
   const [icon, setIcon] = useState(Images.eye);

@@ -1,5 +1,5 @@
-import React, {useLayoutEffect, useState} from 'react';
-import {TouchableOpacity, StyleSheet, Text} from 'react-native';
+import React from 'react';
+import {TouchableOpacity, StyleSheet, Text, View} from 'react-native';
 import PropTypes from 'prop-types';
 import CommonStyles from '../../utils/commonStyles';
 import {Colors} from '../../assets/colors';
@@ -18,18 +18,17 @@ Button.defaultProps = {
 export default function Button(props) {
   const {onPress, label, isDisabled} = props;
 
-  const [disabledStyle, setDisable] = useState(styles.disabled);
-
-  useLayoutEffect(() => {
-    const disableStyle = isDisabled ? styles.disabled : styles.normal;
-    setDisable(disableStyle);
-  }, [isDisabled]);
-
+  const opacity = isDisabled ? 0.4 : 1;
   return (
-    <TouchableOpacity
-      style={{...CommonStyles.container, ...styles.container, ...disabledStyle}}
-      onPress={onPress}>
-      <Text style={styles.lebel}>{label}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={{
+          ...CommonStyles.container,
+          ...styles.container,
+          opacity,
+        }}>
+        <Text style={styles.lebel}>{label}</Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -45,11 +44,5 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: Scaling.ms(16),
     fontWeight: 'bold',
-  },
-  disabled: {
-    //opacity: 0.4,
-  },
-  normal: {
-    // opacity: 1,
   },
 });
